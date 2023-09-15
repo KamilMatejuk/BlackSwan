@@ -1,0 +1,9 @@
+[submodule "emitter_signal"]
+	path = emitter_signal
+	url = git@github.com:cloudjubei/BlackSwanSignalEmitter.git
+[submodule "emitter_price"]
+	path = emitter_price
+	url = git@github.com:cloudjubei/BlackSwanPriceEmitter.git
+[submodule "trading_bot"]
+	path = trading_bot
+	url = git@github.com:cloudjubei/BlackSwanTradingBot.git

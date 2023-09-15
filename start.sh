@@ -57,6 +57,7 @@ echo "version: '3'
 services:
   emitter_price:
     container_name: emitter_price
+    network_mode: host
     build:
       context: "./emitter_price"
     ports:
@@ -64,6 +65,7 @@ services:
 
   emitter_signal:
     container_name: emitter_signal
+    network_mode: host
     build:
       context: "./emitter_signal"
     ports:
@@ -71,10 +73,14 @@ services:
 
   trading_bot:
     container_name: trading_bot
+    network_mode: host
     build:
       context: "./trading_bot"
     ports:
       - '$PORT_TRADING_BOT:$PORT_TRADING_BOT'
+    depends_on:
+      - emitter_price
+      - emitter_signal
 " > docker-compose.yml
 
 
@@ -86,3 +92,7 @@ docker rm -f trading_bot     2>/dev/null >/dev/null
 
 docker compose build
 docker compose up
+
+
+
+# TODO create signals for tradebot here, not copy it

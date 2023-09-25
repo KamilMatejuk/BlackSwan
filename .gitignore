@@ -1,1 +1,4 @@
 docker-compose.yml
+**/Dockerfile
+**/.env.local
+**/__pycache__

@@ -10,6 +10,7 @@ INTERVAL='1s'
 PORT_EMITTER_PRICE=50001
 PORT_EMITTER_SINGAL=50002
 PORT_TRADING_BOT=50003
+PORT_BACKTESTER=50004
 
 
 class Worker:
@@ -61,7 +62,28 @@ class Nest(Worker):
             COPY .env.local .
             RUN npm run build
 
-            CMD [ "node", "dist/main.js"]
+            CMD [ "node", "dist/main.js" ]
+            '''))
+
+class FastAPI(Worker):
+    
+    def create_dockerfile(self):
+        assert self.folder is not None
+        with open(os.path.join(self.folder, 'Dockerfile'), 'w+') as f:
+            f.write(dedent(f'''
+            FROM python:3.10
+
+            # dependencies
+            COPY requirements.txt .
+            RUN python3 -m pip install --no-cache-dir --upgrade -r requirements.txt
+
+            # source
+            COPY src/ src/
+            COPY main.py .
+            COPY config.json .
+            COPY .env.local .
+
+            CMD ["python3", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "{self.port}"]
             '''))
 
 
@@ -122,6 +144,17 @@ class TradingBot(Nest):
         })
 
 
+class Backtester(FastAPI):
+    folder = 'backtester'
+    
+    def prepare(self):
+        self.create_dockerfile()
+        self.save_env({
+            'PORT': self.port,
+        })
+        self.save_config({})
+
+
 class DockerComposer:
     def __init__(self, services: list[Worker]):
         self.services = services
@@ -149,9 +182,10 @@ class DockerComposer:
 
 if __name__ == '__main__':
     dc = DockerComposer([
-        EmitterPrice(PORT_EMITTER_PRICE),
-        EmitterSignal(PORT_EMITTER_SINGAL),
-        TradingBot(PORT_TRADING_BOT),
+        # EmitterPrice(PORT_EMITTER_PRICE),
+        # EmitterSignal(PORT_EMITTER_SINGAL),
+        # TradingBot(PORT_TRADING_BOT),
+        Backtester(PORT_BACKTESTER),
     ])
     dc.prepare()
     dc.start()

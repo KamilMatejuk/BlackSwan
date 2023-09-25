@@ -22,7 +22,7 @@ dir=emitter_signal
 cp Dockerfile.template.nest $dir/Dockerfile
 echo "PORT=$PORT_EMITTER_SINGAL" > $dir/.env.local
 echo "{
-   \"type\": \"signal\",
+    \"type\": \"signal\",
     \"identifier\": \"manual\",
     \"tokens\": [ \"$TICKER\" ],
     \"chance\": 0 

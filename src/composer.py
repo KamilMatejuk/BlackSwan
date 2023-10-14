@@ -17,7 +17,7 @@ class DockerComposer:
                 'container_name': service.folder,
                 'network_mode': 'host',
                 'build': { 'context': f'./{service.folder}' },
-                'volumes': [ f'./{service.folder}/data:$HOME/data' ],
+                'volumes': [ f'./{service.folder}/data:/data' ],
             }
         with open('docker-compose.yml', 'w+') as f:
             yaml.dump(compose, f)

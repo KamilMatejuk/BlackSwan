@@ -18,3 +18,7 @@
 	path = model_basic
 	url = git@github.com:KamilMatejuk/BlackSwanModelBasic.git
 	ignore = dirty
+[submodule "backtester"]
+	path = backtester
+	url = git@github.com:KamilMatejuk/BlackSwanBacktester.git
+	ignore = dirty

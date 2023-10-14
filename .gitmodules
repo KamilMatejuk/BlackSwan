@@ -10,7 +10,6 @@
 	path = trading_bot
 	url = git@github.com:cloudjubei/BlackSwanTradingBot.git
 	ignore = dirty
-
 [submodule "temp_emitter_price"]
 	path = temp_emitter_price
 	url = git@github.com:KamilMatejuk/BlackSwanTempPriceEmitter.git

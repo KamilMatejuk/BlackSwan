@@ -67,14 +67,3 @@ class TradingBot(NestWorker):
                 }
             }
         })
-
-
-class Backtester(FastAPIWorker):
-    folder = 'backtester'
-    
-    def prepare(self):
-        self.create_dockerfile()
-        self.save_env({
-            'PORT': self.port,
-        })
-        self.save_config({})

@@ -69,8 +69,8 @@ class FastAPIWorker(Worker):
             RUN python3 -m pip install --no-cache-dir --upgrade -r requirements.txt
 
             # source
-            COPY src/ src/
-            COPY main.py .
+            COPY *.py .
+            COPY openapi.yaml .
             COPY config.json .
             COPY .env.local .
 

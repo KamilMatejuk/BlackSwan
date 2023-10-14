@@ -16,6 +16,16 @@ class EmitterPrice(NestWorker):
             'intervals': [ INTERVAL ],
         })
 
+class TempEmitterPrice(FastAPIWorker):
+    folder = 'temp_emitter_price'
+    
+    def prepare(self):
+        self.create_dockerfile()
+        self.save_env({
+            'PORT': self.port,
+        })
+        self.save_config({})
+
 
 class EmitterSignal(NestWorker):
     folder = 'emitter_signal'

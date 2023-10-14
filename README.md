@@ -6,3 +6,9 @@ This projects organizes all other services and provides an easy way of running a
 ```
 git submodule add <url> <folder>
 ```
+
+## Start
+```
+git submodule update --init --recursive
+python3 start.py
+```

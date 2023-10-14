@@ -67,3 +67,14 @@ class TradingBot(NestWorker):
                 }
             }
         })
+
+
+class ModelBasic(FastAPIWorker):
+    folder = 'model_basic'
+    
+    def prepare(self):
+        self.create_dockerfile()
+        self.save_env({
+            'PORT': self.port,
+        })
+        self.save_config({})

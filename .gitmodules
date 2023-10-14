@@ -15,3 +15,7 @@
 	path = temp_emitter_price
 	url = git@github.com:KamilMatejuk/BlackSwanTempPriceEmitter.git
 	ignore = dirty
+[submodule "model_basic"]
+	path = model_basic
+	url = git@github.com:KamilMatejuk/BlackSwanModelBasic.git
+	ignore = dirty

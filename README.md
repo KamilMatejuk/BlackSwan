@@ -9,6 +9,7 @@ git submodule add <url> <folder>
 
 ## Start
 ```
-git submodule update --init --recursive
+git submodule update --recursive --init
+git submodule update --recursive --remote --force
 python3 start.py
 ```

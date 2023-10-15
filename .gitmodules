@@ -22,3 +22,7 @@
 	path = backtester
 	url = git@github.com:KamilMatejuk/BlackSwanBacktester.git
 	ignore = dirty
+[submodule "model_rl"]
+	path = model_rl
+	url = git@github.com:KamilMatejuk/BlackSwanModelRL.git
+	ignore = dirty

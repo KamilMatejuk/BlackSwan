@@ -10,13 +10,14 @@ from src.services import EmitterSignal
 from src.services import TradingBot
 from src.services import TempEmitterPrice
 from src.services import ModelBasic
+from src.services import ModelRL
 from src.services import BackTester
 
 
 if __name__ == '__main__':
     dc = DockerComposer([
         TempEmitterPrice(PORT_EMITTER_PRICE),
-        ModelBasic(PORT_MODEL),
+        ModelRL(PORT_MODEL),
         BackTester(PORT_BACKTESTER),
     ], len(sys.argv) > 1 and sys.argv[1] == "--no-cache")
     dc.prepare()

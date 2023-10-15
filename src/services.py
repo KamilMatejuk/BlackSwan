@@ -80,6 +80,21 @@ class ModelBasic(FastAPIWorker):
         self.save_config({})
 
 
+class ModelRL(FastAPIWorker):
+    folder = 'model_rl'
+    
+    def prepare(self):
+        self.create_dockerfile()
+        self.save_env({
+            'PORT': self.port,
+        })
+        self.save_config({
+            'lr': 0.01,
+            'gamma': 0.8,
+            'epsilon': 0.05,
+        })
+
+
 class BackTester(FastAPIWorker):
     folder = 'backtester'
     

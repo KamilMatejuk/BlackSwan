@@ -26,3 +26,7 @@
 	path = model_rl
 	url = git@github.com:KamilMatejuk/BlackSwanModelRL.git
 	ignore = dirty
+[submodule "learner"]
+	path = learner
+	url = git@github.com:KamilMatejuk/BlackSwanLearner.git
+	ignore = dirty

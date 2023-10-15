@@ -104,3 +104,14 @@ class BackTester(FastAPIWorker):
             'PORT': self.port,
         })
         self.save_config({})
+
+
+class Learner(FastAPIWorker):
+    folder = 'learner'
+    
+    def prepare(self):
+        self.create_dockerfile()
+        self.save_env({
+            'PORT': self.port,
+        })
+        self.save_config({})
